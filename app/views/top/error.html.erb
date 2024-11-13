@@ -1,1 +1,46 @@
-ログインに失敗しました。
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* 青を基調とした背景色 */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+  }
+
+  .login-container {
+    background-color: #ffffff; /* 白い背景 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影で立体感を追加 */
+    width: 350px;
+    text-align: center;
+    position: relative; /* 文字が背景より上に来るように */
+    z-index: 1; /* 最前面に表示 */
+  }
+
+  .error-message {
+    color: #d8000c; /* 赤い文字色 */
+    font-weight: bold;
+    font-size: 16px; /* 読みやすいサイズ */
+    background-color: #ffe6e6; /* 薄い赤の背景 */
+    padding: 10px;
+    border: 1px solid #d8000c; /* 赤い枠線 */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    z-index: 2; /* 背景よりさらに前面に表示 */
+    position: relative;
+    box-sizing: border-box;
+  }
+</style>
+
+<div class="login-container">
+  <% if flash[:error] %>
+    <div class="error-message">
+      ログインに失敗しました。
+    </div>
+  <% end %>
+</div>

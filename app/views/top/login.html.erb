@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -74,22 +73,10 @@
   <%= form_with url: '/top/login', method: :post, local: true do |f| %>
     <%= f.label :name, 'ユーザー名' %>
     <%= f.text_field :name %>
-=======
-<%= form_with url: '/top/login', method: :post, local: true do |f| %>
-    <%= f.label :name, 'ユーザー名' %>
-    <%= f.text_field :name %>
-    <br>
->>>>>>> ec818a21e9d89cd16303828c44391370c3688e0b
     <%= f.label :pass, 'パスワード' %>
     <%= f.password_field :pass %>
     <Br>
     <%= f.submit 'ログイン' %>
-<<<<<<< HEAD
   <% end %>
   <%= link_to '新規登録', new_user_path %>
 </div>
-=======
-<% end %>
-
-<%= link_to '新規登録', new_user_path %>
->>>>>>> ec818a21e9d89cd16303828c44391370c3688e0b

@@ -1,9 +1,74 @@
-<%= form_with model: @user do |f| %>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* 青を基調にした背景色 */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .form-container {
+    background-color: #ffffff; /* 白い背景 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影で立体感を追加 */
+    width: 350px; /* フォームの幅を調整 */
+  }
+
+  .form-container h2 {
+    text-align: center;
+    color: #007BFF; /* メインカラーを青に設定 */
+    margin-bottom: 20px;
+  }
+
+  .form-container label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333; /* ラベル文字の色を調整 */
+    font-weight: bold;
+  }
+
+  .form-container input[type="text"],
+  .form-container input[type="password"] {
+    width: calc(100% - 20px); /* 入力欄を余裕を持たせて表示 */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* 入力欄の枠線 */
+    border-radius: 5px;
+    box-sizing: border-box; /* ボックスサイズ調整 */
+  }
+
+  .form-container input[type="submit"] {
+    width: 100%;
+    background-color: #007BFF; /* ボタンの青い背景 */
+    color: #fff; /* 白い文字 */
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .form-container input[type="submit"]:hover {
+    background-color: #0056b3; /* ホバーカラーを濃い青に */
+  }
+</style>
+
+<div class="form-container">
+  <h2>新規登録</h2>
+  <%= form_with model: @user do |f| %>
     <%= f.label :name, 'ユーザー名' %>
     <%= f.text_field :name %>
-    <br>
     <%= f.label :pass, 'パスワード' %>
     <%= f.text_field :pass %>
-    <br>
-    <%= f.submit '新規登録' %>
-<% end %>
+    <%= f.label :email, 'メールアドレス' %>
+    <%= f.text_field :email %>
+    <%= f.label :address, '住所' %>
+    <%= f.text_field :address %>
+    <%= f.submit '登録' %>
+  <% end %>
+</div>

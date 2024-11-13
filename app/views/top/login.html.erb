@@ -1,11 +1,11 @@
 <%= form_with url: '/top/login', method: :post, local: true do |f| %>
-    <%= f.label :uid, 'ユーザーID' %>
-    <%= f.text_field :uid %>
+    <%= f.label :name, 'ユーザー名' %>
+    <%= f.text_field :name %>
+    <br>
     <%= f.label :pass, 'パスワード' %>
     <%= f.password_field :pass %>
+    <Br>
     <%= f.submit 'ログイン' %>
 <% end %>
 
-<%= link_to 'ユーザー登録', new_user_path %>
-
-<%= link_to 'ユーザー一覧', users_path %>
+<%= link_to '新規登録', new_user_path %>

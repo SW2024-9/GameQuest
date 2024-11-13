@@ -1,11 +1,81 @@
-<%= form_with url: '/top/login', method: :post, local: true do |f| %>
-    <%= f.label :uid, 'ユーザーID' %>
-    <%= f.text_field :uid %>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* 淡い青の背景色 */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .login-container {
+    background-color: #ffffff; /* 白の背景 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 320px; /* 幅を少し広げる */
+  }
+
+  .login-container h2 {
+    color: #007BFF; /* 青い文字色 */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .login-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  .login-container input[type="text"],
+  .login-container input[type="password"] {
+    width: calc(100% - 16px); /* フォーム幅から余白分を引く */
+    padding: 10px; /* 内側に余白を追加 */
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* ボーダー込みで幅を計算 */
+  }
+
+  .login-container input[type="submit"] {
+    width: 95%;
+    background-color: #007BFF; /* 青いボタン */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .login-container input[type="submit"]:hover {
+    background-color: #0056b3; /* ホバーカラーを濃い青に */
+  }
+
+  .login-container a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007BFF;
+    text-decoration: none;
+  }
+
+  .login-container a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="login-container">
+  <h2>ログイン</h2>
+  <%= form_with url: '/top/login', method: :post, local: true do |f| %>
+    <%= f.label :name, 'ユーザー名' %>
+    <%= f.text_field :name %>
     <%= f.label :pass, 'パスワード' %>
     <%= f.password_field :pass %>
     <%= f.submit 'ログイン' %>
-<% end %>
-
-<%= link_to 'ユーザー登録', new_user_path %>
-
-<%= link_to 'ユーザー一覧', users_path %>
+  <% end %>
+  <%= link_to '新規登録', new_user_path %>
+</div>

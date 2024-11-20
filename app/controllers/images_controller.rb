@@ -8,8 +8,8 @@ class ImagesController < ApplicationController
     end
 
     def create
-        title = params[:image][:title]
-        image = Image.new(title: title)
+        file = params[:image][:file].read
+        image = Image.new(title: title, file: file)
         image.save
         redirect_to '/'
     end
@@ -29,5 +29,10 @@ class ImagesController < ApplicationController
         title = params[:image][:title]
         @image.update(title: title)
         redirect_to '/'
+    end
+    
+    def get_image
+        image = Image.find(params[:id])
+        send_data image.file, disposition: :inline, type: 'image/png'
     end
 end

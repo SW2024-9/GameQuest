@@ -1,2 +1,16 @@
-<h1>Cartitems#new</h1>
-<p>Find me in app/views/cartitems/new.html.erb</p>
+<%= form_with model: @cart_item, url: cartitems_path do |f| %>
+  <p>
+    <%= f.label :name, '商品名' %>
+    <%= Product.find(params[:product_id]).name %>
+  </p>
+  <p>
+    <%= f.label :price, '価格' %>
+    <%= Product.find(params[:product_id]).price %>
+  </p>
+  <p>
+    <%= f.label :qty, '数量' %>
+    <%= f.text_field :qty %>
+  </p>
+  <%= f.hidden_field :product_id, value: params[:product_id] %>
+  <%= f.submit '商品を登録する' %>
+<% end %>

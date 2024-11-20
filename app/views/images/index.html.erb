@@ -1,0 +1,6 @@
+<% @images.each do |image| %>
+  <p><%= image.title %></p>
+  <%= link_to '新規追加', '/images/new' %>
+  <%= link_to '削除', "/images/#{image.id}", data: {turbo_method: :delete} %>
+  <%= link_to '編集', "/images/#{image.id}/edit" %>
+<% end %>

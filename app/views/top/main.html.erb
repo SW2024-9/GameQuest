@@ -1,0 +1,60 @@
+<div class="main-container">
+  <!--
+  <h1>ようこそ、<%= current_user.name %> さん！</h1>
+
+  <div class="menu">
+    <h2>メニュー</h2>
+    <ul>
+      <li><%= link_to '検索', search_path %></li>
+      <li><%= link_to '欲しいものリスト', wishlist_path %></li>
+      <li><%= link_to '出品', new_listing_path %></li>
+      <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+    </ul>
+  </div>
+
+  <div class="search-section">
+    <h2>検索</h2>
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.label :query, 'キーワードを入力してください' %>
+      <%= f.text_field :query %>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
+
+  <div class="wishlist-section">
+    <h2>欲しいものリスト</h2>
+    <% if @wishlist_items.any? %>
+      <ul>
+        <% @wishlist_items.each do |item| %>
+          <li><%= item.name %> - <%= link_to '詳細', item_path(item) %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>欲しいものリストにアイテムがありません。</p>
+    <% end %>
+  </div>
+  -->
+  
+  
+  
+  <h1>ようこそ、<%= @current_user.name %> さん！</h1>
+
+<ul>
+  <li><%= link_to '検索', search_path %></li>
+  <li><%= link_to '欲しいものリスト', wishlist_path %></li>
+  <li><%= link_to '出品', new_listing_path %></li>
+  <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+</ul>
+
+<h2>欲しいものリスト</h2>
+<% if @wishlist_items.any? %>
+  <ul>
+    <% @wishlist_items.each do |item| %>
+      <li><%= item.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>欲しいものリストにアイテムがありません。</p>
+<% end %>
+
+</div>

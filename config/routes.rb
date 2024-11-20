@@ -13,9 +13,10 @@ Rails.application.routes.draw do
   get 'top/main'
   post 'top/login'
   get 'top/logout'
+  get 'get_image/:id', to: 'images#get_image'
   
   
-  root 'top#main'
+  root 'users#new'
   
   
   

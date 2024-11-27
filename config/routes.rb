@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'get_image/:id', to: 'images#get_image'
   
   
-  root 'users#new'
+  root 'top#main'
   
   
   

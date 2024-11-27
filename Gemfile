@@ -69,7 +69,7 @@ group :test do
   
   
 #Topページのコード
-gem 'bcrypt'
+gem 'bcrypt', '~> 3.1.7'
 ####################
 
 

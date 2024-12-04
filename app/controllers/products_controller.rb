@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @product = Product.all
+    @products = Product.all
   end
 
   def new
@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
   
   def create
-    p = Product.new(name: params[:product][:name], price: params[:product][:price], explanation: params[:product][:explanation])
+    p = Product.new(file: params[:product][:file].read, name: params[:product][:name], price: params[:product][:price], explanation: params[:product][:explanation])
     p.save
     redirect_to root_path
   end
@@ -17,4 +17,10 @@ class ProductsController < ApplicationController
     Product.find(params[:id]).destroy
     redirect_to root_path
   end
+  
+  def get_image
+    image = Product.find(params[:id])
+    send_data image.file, disposition: :inline, type: 'image/png'
+  end
+  
 end

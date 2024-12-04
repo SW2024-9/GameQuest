@@ -1,7 +1,7 @@
 <% @cartitems.each do |e| %>
     商品名 : <%= Product.find(e.product_id).name %>
     価格 : <%= Product.find(e.product_id).price %>
-    数量 : <%= e.qty %>
+    個数 : <%= e.qty %>
     <%= link_to '削除', cartitem_path(e), data: { turbo_method: :delete } %>
     <br>
 <% end %>

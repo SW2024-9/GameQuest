@@ -1,8 +1,8 @@
-<% @product.each do |e| %>
-  <%= link_to e.name , new_cartitem_path(product_id: e.id) %>
+<% @products.each do |e| %>
+  <%= link_to e.name, new_cartitem_path(product_id: e.id) %>
   <br>
 <% end %>
 
-<%= link_to "カートを見る", cart_path(current_cart.id) %>
-<br>
 <%= link_to "トップへ戻る", root_path %>
+
+<%= link_to "カートを見る", cart_path(current_cart.id) %>

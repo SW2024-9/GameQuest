@@ -4,8 +4,10 @@ one:
   name: MyString
   price: 1
   explanation: MyString
+  file: 
 
 two:
   name: MyString
   price: 1
   explanation: MyString
+  file: 

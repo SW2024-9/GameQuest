@@ -1,6 +1,6 @@
 <%= form_with model: @product do |f| %>
   <p>
-    <%= f.label :file, '商品写真' %>
+    <%= f.label :file, '商品画像' %>
     <%= f.file_field :file %>
   </p>
   <p>
@@ -8,12 +8,12 @@
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :price, '価格' %>
-    <%= f.text_field :price %>
-  </p>
-  <p>
     <%= f.label :explanation, '商品説明' %>
     <%= f.text_field :explanation %>
+  </p>
+  <p>
+    <%= f.label :price, '価格' %>
+    <%= f.text_field :price %>
   </p>
   <%= f.submit '登録' %>
 <% end %>

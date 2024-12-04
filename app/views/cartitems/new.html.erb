@@ -1,23 +1,102 @@
-<%= form_with model: @cart_item, url: cartitems_path do |f| %>
-  <p>
-    <%= image_tag "/get_image/#{f.id}" %>
-  </p>
-  <p>
-    <%= f.label :name, '商品名' %>
-    <%= Product.find(params[:product_id]).name %>
-  </p>
-  <p>
-    <%= f.label :explanation, '商品説明' %>
-    <%= Product.find(params[:product_id]).explanation %>
-  </p>
-  <p>
-    <%= f.label :price, '価格' %>
-    <%= Product.find(params[:product_id]).price %>
-  </p>
-  <p>
-    <%= f.label :qty, '個数' %>
-    <%= f.text_field :qty %>
-  </p>
-  <%= f.hidden_field :product_id, value: params[:product_id] %>
-  <%= f.submit 'カートに入れる' %>
-<% end %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カートアイテム登録</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff; /* 青を基調にした背景色 */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: #ffffff; /* 白い背景 */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影で立体感を追加 */
+      width: 350px; /* フォームの幅を調整 */
+    }
+
+    .form-container h2 {
+      text-align: center;
+      color: #007BFF; /* メインカラーを青に設定 */
+      margin-bottom: 20px;
+    }
+
+    .form-container label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333; /* ラベル文字の色を調整 */
+      font-weight: bold;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="password"],
+    .form-container input[type="file"],
+    .form-container input[type="number"] {
+      width: calc(100% - 20px); /* 入力欄を余裕を持たせて表示 */
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc; /* 入力欄の枠線 */
+      border-radius: 5px;
+      box-sizing: border-box; /* ボックスサイズ調整 */
+    }
+
+    .form-container input[type="submit"] {
+      width: 100%;
+      background-color: #007BFF; /* ボタンの青い背景 */
+      color: #fff; /* 白い文字 */
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-container input[type="submit"]:hover {
+      background-color: #0056b3; /* ホバーカラーを濃い青に */
+    }
+
+    .form-container img {
+      max-width: 100%; /* 画像がフォームの幅に合わせて表示されるように */
+      border-radius: 5px; /* 画像の角を丸くする */
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <%= form_with model: @cart_item, url: cartitems_path do |f| %>
+      <p>
+        <%= image_tag "/get_image/#{f.id}", alt: "商品画像" %>
+      </p>
+      <p>
+        <%= f.label :name, '商品名' %>
+        <%= Product.find(params[:product_id]).name %>
+      </p>
+      <p>
+        <%= f.label :explanation, '商品説明' %>
+        <%= Product.find(params[:product_id]).explanation %>
+      </p>
+      <p>
+        <%= f.label :price, '価格' %>
+        <%= Product.find(params[:product_id]).price %>
+      </p>
+      <p>
+        <%= f.label :qty, '個数' %>
+        <%= f.text_field :qty %>
+      </p>
+      <%= f.hidden_field :product_id, value: params[:product_id] %>
+      <%= f.submit 'カートに入れる' %>
+    <% end %>
+  </div>
+</body>
+</html>

@@ -1,6 +1,14 @@
 class User < ApplicationRecord
-    #Topページの作成
+    #12/4
     ##############################################################
-    #has_secure_password # bcryptを利用してパスワードを安全に管理
+    before_save :encrypt_password
+
+    private
+
+    def encrypt_password
+        if pass.present? && !BCrypt::Password.valid_hash?(pass)
+            self.pass = BCrypt::Password.create(pass)
+        end
+    end
     ##############################################################
 end

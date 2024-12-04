@@ -20,22 +20,10 @@ Rails.application.routes.draw do
   
   
   
-#Topページ
+#12/4変更箇所
 #################################################################
-  #root 'top#login' # ログインページをルートに設定
-
-  # セッション管理
-  #get '/login', to: 'top#login'
-  #post '/create_session', to: 'top#create_session'
-  #delete '/logout', to: 'top#logout'
-
-  # メインページ
-  #get '/main', to: 'top#main'
-
-  # サンプル: 検索や欲しいものリストなどのパス
-  #get '/search', to: 'search#index'
-  #get '/wishlist', to: 'wishlist#index'
-  #get '/listings/new', to: 'listings#new'
+  post "/top/login", to: "sessions#create"  # ログイン処理
+  get "/main", to: "main#index"  # メインページ
 ####################################################### 
   
   

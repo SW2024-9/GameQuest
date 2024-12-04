@@ -1,0 +1,12 @@
+<div class="login-container">
+  <h2>GameQuest</h2>
+  <%= form_with url: '/top/login', method: :post, local: true do |f| %>
+    <%= f.label :name, 'ユーザー名' %>
+    <%= f.text_field :name %>
+    <%= f.label :pass, 'パスワード' %>
+    <%= f.password_field :pass %>
+    <br>
+    <%= f.submit 'ログイン' %>
+  <% end %>
+  <%= link_to '新規登録', new_user_path %>
+</div>

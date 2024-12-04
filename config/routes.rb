@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post 'top/login'  
   get 'top/main'
   get 'top/logout'
-  get 'get_image/:id', to: 'images#get_image'
+  get 'get_image/:id', to: 'products#get_image'
   
   
 <<<<<<< HEAD

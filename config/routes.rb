@@ -10,13 +10,17 @@ Rails.application.routes.draw do
   
   resources :images
   
+  post 'top/login'  
   get 'top/main'
-  post 'top/login'
   get 'top/logout'
   get 'get_image/:id', to: 'images#get_image'
   
   
+<<<<<<< HEAD
   root 'top#main'
+=======
+  root 'top#index'
+>>>>>>> b3348564eee3a9ec9ce03a66574c3b750890209f
   
   
   

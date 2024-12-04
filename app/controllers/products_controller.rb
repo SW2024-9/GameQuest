@@ -1,14 +1,14 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @product = Product.all
   end
 
   def new
-    @products = Product.new
+    @product = Product.new
   end
   
   def create
-    p = Product.new(name: params[:product][:name], price: params[:product][:price])
+    p = Product.new(name: params[:product][:name], price: params[:product][:price], explanation: params[:product][:explanation])
     p.save
     redirect_to root_path
   end

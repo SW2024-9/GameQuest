@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
 
     def create
         file = params[:image][:file].read
-        image = Image.new(title: title, file: file)
+        image = Image.new(file: file)
         image.save
         redirect_to '/'
     end

@@ -1,4 +1,106 @@
-<%= link_to 'ログイン', top_login_path %>
-<%= link_to '商品追加', new_product_path %>
-<%= link_to '商品一覧', products_index_path %>
-<%= link_to 'カート', carts_show_path %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECサイト トップページ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff; /* 青を基調にした背景色 */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      height: 100vh;
+      padding-top: 20px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      background-color: #007BFF;
+      padding: 10px 0;
+      color: white;
+      font-size: 16px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
+    .product-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 20px;
+      width: 80%;
+      max-width: 1200px;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card p {
+      padding: 10px;
+      font-size: 16px;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- ナビゲーションバー -->
+  <div class="navbar">
+    <% if current_user %>
+      <!-- ログイン状態の場合は、ログアウトリンクを表示 -->
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <!-- ログインしていない場合は、ログインリンクを表示 -->
+      <%= link_to 'ログイン', top_main_path %>
+    <% end %>
+    <%= link_to '商品追加', new_product_path %>
+    <%= link_to '商品一覧', products_index_path %>
+    <%= link_to 'カート', carts_show_path %>
+  </div>
+
+  <!-- 商品ギャラリー -->
+
+
+  <!-- フッター -->
+  <div class="footer">
+    <p>&copy; 2024 ECサイト</p>
+  </div>
+</body>
+</html>

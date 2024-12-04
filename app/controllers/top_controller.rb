@@ -28,7 +28,7 @@ class TopController < ApplicationController
     
     
     
-#Topページのコード
+#12/4
 ##############################################################################
 #class TopController < ApplicationController
 #  before_action :require_login, only: [:main]

@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   get 'get_image/:id', to: 'products#get_image'
   
   
+<<<<<<< HEAD
   root 'top#index'
+=======
+  root 'top#main'
+>>>>>>> f8fd9fb09606bcfe2075d95782d62a9d2189df1e
   
   
   

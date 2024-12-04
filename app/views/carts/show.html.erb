@@ -1,9 +1,86 @@
-<% @cartitems.each do |e| %>
-    商品名 : <%= Product.find(e.product_id).name %>
-    価格 : <%= Product.find(e.product_id).price %>
-    個数 : <%= e.qty %>
-    <%= link_to '削除', cartitem_path(e), data: { turbo_method: :delete } %>
-    <br>
-<% end %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カート内の商品</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff; /* 青を基調にした背景色 */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      height: 100vh;
+      padding-top: 20px;
+    }
 
-<%= link_to "トップに戻る", root_path %>
+    .cart-container {
+      background-color: #ffffff; /* 白い背景 */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影で立体感を追加 */
+      width: 80%; /* 幅を調整 */
+      max-width: 600px; /* 最大幅を指定 */
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-item p {
+      margin: 5px 0;
+    }
+
+    .cart-item a {
+      color: #ff5733; /* 削除リンクの色を赤系に設定 */
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .cart-item a:hover {
+      text-decoration: underline;
+    }
+
+    .return-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .return-link a {
+      color: #007BFF; /* トップに戻るリンクの色を青に設定 */
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .return-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="cart-container">
+    <% @cartitems.each do |e| %>
+      <div class="cart-item">
+        <p><strong>商品名:</strong> <%= Product.find(e.product_id).name %></p>
+        <p><strong>価格:</strong> ¥<%= Product.find(e.product_id).price %></p>
+        <p><strong>個数:</strong> <%= e.qty %></p>
+        <%= link_to '削除', cartitem_path(e), data: { turbo_method: :delete }, class: 'delete-link' %>
+      </div>
+    <% end %>
+
+    <div class="return-link">
+      <%= link_to "トップに戻る", root_path %>
+    </div>
+  </div>
+</body>
+</html>

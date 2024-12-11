@@ -74,7 +74,7 @@
         <p><strong>商品名:</strong> <%= Product.find(e.product_id).name %></p>
         <p><strong>価格:</strong> ¥<%= Product.find(e.product_id).price %></p>
         <p><strong>個数:</strong> <%= e.qty %></p>
-        <%= link_to '削除', cartitem_path(e), data: { turbo_method: :delete }, class: 'delete-link' %>
+        <%= link_to '削除', cartitem_path(e),  method: :delete %>
       </div>
     <% end %>
 

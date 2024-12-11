@@ -1,6 +1,9 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all.presence || []
+    @q = Product.ransack(params[:q]) # 検索条件を作成
+    @products = @q.result(distinct: true) # 検索結果を取得
+    #変更前のコード
+    #@products = Product.all.presence || []
   end
 
   def new

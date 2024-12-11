@@ -11,30 +11,49 @@
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
       flex-direction: column;
-      height: 100vh;
-      padding-top: 20px;
+      align-items: center;
     }
 
-    .navbar {
+    .search-container {
+      width: 100%;
+      background-color: #f9f9f9; /* 白系の背景色 */
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 検索部分の軽い影 */
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .search-container .search_form {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background-color: #007BFF; /* 青い背景 */
+      color: white;
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-links {
       display: flex;
       justify-content: space-around;
       width: 100%;
-      background-color: #007BFF;
-      padding: 10px 0;
-      color: white;
-      font-size: 16px;
+      max-width: 1200px;
     }
 
-    .navbar a {
+    .nav-links a {
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
 
-    .navbar a:hover {
+    .nav-links a:hover {
       text-decoration: underline;
     }
 
@@ -47,32 +66,6 @@
       max-width: 1200px;
     }
 
-    .product-card {
-      background-color: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .product-card img {
-      width: 100%;
-      height: auto;
-      cursor: pointer;
-    }
-
-    .product-card:hover {
-      transform: scale(1.05);
-    }
-
-    .product-card p {
-      padding: 10px;
-      font-size: 16px;
-      margin: 0;
-      font-weight: bold;
-    }
-
     .footer {
       text-align: center;
       margin-top: 30px;
@@ -80,23 +73,38 @@
     }
   </style>
 </head>
+
 <body>
-  <!-- ナビゲーションバー -->
-  <div class="navbar">
-    <% if current_user %>
-      <!-- ログイン状態の場合は、ログアウトリンクを表示 -->
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <!-- ログインしていない場合は、ログインリンクを表示 -->
-      <%= link_to 'ログイン', top_main_path %>
-    <% end %>
-    <%= link_to '商品追加', new_product_path %>
-    <%= link_to '商品一覧', products_index_path %>
-    <%= link_to 'カート', carts_show_path %>
+  <!-- 検索機能 -->
+  <div class="search-container">
+    <div class="search_form">
+      <%= form_with url: search_path, local: true, method: :get do |f| %>
+        <%= f.text_field :word, placeholder: "検索キーワード", style: "padding: 5px;" %>
+        <%= f.select :range, options_for_select([['User', 'ユーザー'], ['Product', '商品']]) %>
+        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"], ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+        <%= f.submit "検索", class: "btn-sm btn-primary" %>
+      <% end %>
+    </div>
   </div>
 
-  <!-- 商品ギャラリー -->
+  <!-- ヘッダー -->
+  <header>
+    <div class="nav-links">
+      <% if current_user %>
+        <%= link_to 'ログイン', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'ログアウト', top_main_path %>
+      <% end %>
+      <%= link_to '商品追加', new_product_path %>
+      <%= link_to '商品一覧', products_index_path %>
+      <%= link_to 'カート', carts_show_path %>
+    </div>
+  </header>
 
+  <!-- 商品ギャラリー -->
+  <div class="product-gallery">
+    <!-- 商品カードがここに表示されます -->
+  </div>
 
   <!-- フッター -->
   <div class="footer">

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'get_image/:id', to: 'products#get_image'
   
   
-  root 'top#main'
+  root 'top#index'
   
   
   
@@ -24,7 +24,13 @@ Rails.application.routes.draw do
 #################################################################
   post "/top/login", to: "sessions#create"  # ログイン処理
   get "/main", to: "main#index"  # メインページ
-####################################################### 
+
+#検索
+  get "search" => "searches#search"
+
+#12/11ログアウト用
+delete '/logout', to: 'sessions#destroy', as: :logout
+################################################################
   
   
   

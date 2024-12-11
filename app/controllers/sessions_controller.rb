@@ -10,4 +10,13 @@ class SessionsController < ApplicationController
       redirect_to root_path, alert: "ユーザー名またはパスワードが間違っています。"
     end
   end
+  
+  
+  #ログアウト機能
+  def destroy
+    reset_session # 現在のセッションを破棄
+    redirect_to root_path, notice: "ログアウトしました"
+  end
+  #######################################################
+
 end

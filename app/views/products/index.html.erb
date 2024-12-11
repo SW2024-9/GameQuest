@@ -1,3 +1,40 @@
+<h1>商品一覧</h1>
+
+<div>
+  <%= search_form_for @q, url: products_path, method: :get do |f| %>
+    <div>
+      <%= f.label :name_cont, "商品名で検索" %>
+      <%= f.text_field :name_cont %>
+    </div>
+    <div>
+      <%= f.submit "検索" %>
+    </div>
+  <% end %>
+</div>
+
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <%= product.name %> - <%= number_to_currency(product.price) %>
+    </li>
+  <% end %>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <% @products.each do |e| %>
   <%= link_to e.name, new_cartitem_path(product_id: e.id) %>
   <br>

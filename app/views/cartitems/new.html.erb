@@ -13,6 +13,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column; /* 縦並びに変更 */
       height: 100vh;
     }
 
@@ -22,6 +23,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影で立体感を追加 */
       width: 350px; /* フォームの幅を調整 */
+      margin-bottom: 50px; /* ボタンとの間に余白を追加 */
     }
 
     .form-container h2 {
@@ -70,13 +72,32 @@
       border-radius: 5px; /* 画像の角を丸くする */
       margin-bottom: 15px;
     }
+
+    /* トップへ戻るボタンのスタイル */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px; /* 画面の下部から20pxの位置 */
+      right: 20px;
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-to-top:hover {
+      background-color: #0056b3; /* ホバー時の色変更 */
+    }
   </style>
 </head>
 <body>
   <div class="form-container">
     <%= form_with model: @cart_item, url: cartitems_path do |f| %>
       <p>
-        <%= image_tag "/get_image/#{f.id}", alt: "商品画像" %>
+       <% product = Product.find(params[:product_id]) %>
+       <%= image_tag "/get_image/#{product.id}" %>
       </p>
       <p>
         <%= f.label :name, '商品名' %>
@@ -98,5 +119,9 @@
       <%= f.submit 'カートに入れる' %>
     <% end %>
   </div>
+
+  <!-- トップへ戻るボタン -->
+  <%= link_to 'トップへ戻る', root_path, class: 'back-to-top' %>
 </body>
 </html>
+

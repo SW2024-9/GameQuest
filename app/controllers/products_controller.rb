@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
   end
   
   def get_image
-    image = Product.find(params[:id])
+    image = Product.find_by(params[:id])
     send_data image.file, disposition: :inline, type: 'image/png'
   end
   

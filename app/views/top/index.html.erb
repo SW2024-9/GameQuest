@@ -102,8 +102,7 @@
       <% else %>
         <%= link_to 'ログアウト', top_main_path %>
       <% end %>
-      <%= link_to '商品追加', new_product_path %>
-      <%= link_to '商品一覧', products_index_path %>
+      <%= link_to '出品', new_product_path %>
       <%= link_to 'カート', carts_show_path %>
     </div>
   </header>
@@ -114,7 +113,7 @@
     <% if @products.present? %>
       <% @products.each do |product| %>
         <%= link_to new_cartitem_path(product_id: product.id) do %>
-          <%= image_tag "/get_image/#{product.id}", alt: product.name %> <!-- 商品名をalt属性に追加 -->
+          <%= image_tag "/get_image/#{product.id}", alt: product.name %><!-- 商品名をalt属性に追加 -->
         <% end %>
       <% end %>
     <% else %>
@@ -124,7 +123,7 @@
 
   <!-- フッター -->
   <div class="footer">
-    <p>&copy; 2024 ECサイト</p>
+    <p>&copy; 2024 GameQuest</p>
   </div>
 </body>
 </html>

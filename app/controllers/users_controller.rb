@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   
   def create
     signup_password = BCrypt::Password.create(params[:user][:pass])
-    u = User.new(uid: params[:user][:uid], pass: signup_password)
+    u = User.new(name: params[:user][:name], pass: signup_password, email: params[:user][:email], address: params[:user][:address])
     u.save
     redirect_to users_path
   end

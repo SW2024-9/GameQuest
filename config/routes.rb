@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'top/main'
   get 'top/logout'
   
+  
   get 'get_image/:id', to: 'products#get_image'
   
   root 'top#index'

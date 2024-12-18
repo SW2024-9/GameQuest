@@ -1,9 +1,12 @@
 class ProductsController < ApplicationController
   def index
-    @q = Product.ransack(params[:q]) # 検索条件を作成
-    @products = @q.result(distinct: true) # 検索結果を取得
+    #@q = Product.ransack(params[:q]) # 検索条件を作成
+    #@products = @q.result(distinct: true) || [] # 検索結果を取得
     #変更前のコード
-    #@products = Product.all.presence || []
+    # @q = Product.ransack(params[:q])  # 検索条件を作成
+    # @products = @q.result(distinct: true)  # 検索結果を取得
+    #@products = [] if @products.nil?  # 結果がnilの場合、空の配列にする
+    @products = Product.all
   end
 
   def new

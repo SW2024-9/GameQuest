@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+    #12/18
+    has_secure_password
+    ####
+    
+    
+    
     #12/4
     #検索方法分岐
     def self.looks(search, word)

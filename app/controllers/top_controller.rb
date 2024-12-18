@@ -26,7 +26,9 @@ class TopController < ApplicationController
         redirect_to root_path
     end
     
-    
+    def index
+        @products = Product.all  # 商品の一覧を取得
+    end
     
 
 

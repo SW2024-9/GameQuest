@@ -63,6 +63,24 @@
     .form-container input[type="submit"]:hover {
       background-color: #0056b3; /* ホバーカラーを濃い青に */
     }
+    
+        /* トップへ戻るボタンのスタイル */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px; /* 画面の下部から20pxの位置 */
+      right: 20px;
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-to-top:hover {
+      background-color: #0056b3; /* ホバー時の色変更 */
+    }
   </style>
 </head>
 <body>
@@ -88,5 +106,7 @@
       <%= f.submit '登録' %>
     <% end %>
   </div>
+    <!-- トップへ戻るボタン -->
+  <%= link_to 'トップへ戻る', root_path, class: 'back-to-top' %>
 </body>
 </html>

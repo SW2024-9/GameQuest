@@ -1,7 +1,7 @@
 class TopController < ApplicationController
     def main
         if session[:login_uid]
-            redirect_to tweets_path
+            redirect_to top_path
         else
             render "login"
         end
@@ -30,33 +30,7 @@ class TopController < ApplicationController
         @products = Product.all  # 商品の一覧を取得
     end
     
-#12/4
-##############################################################################
-#class TopController < ApplicationController
-#  before_action :require_login, only: [:main]
-#
-  # ログインページの表示
-  #def login
-  #end
 
-  # ログイン処理
-#  def create_session
-#    user = User.find_by(name: params[:name])
-
-#    if user&.authenticate(params[:password]) # パスワードを検証
-#      session[:user_id] = user.id # セッションにユーザーIDを保存
-#      redirect_to main_path, notice: 'ログインしました。'
-#    else
-#      flash[:alert] = 'ユーザー名またはパスワードが間違っています。'
-#      render :login
-#    end
-#  end
-
-  # メインページ
-#  def main
-#    @current_user = current_user
-#    @wishlist_items = @current_user.wishlist_items || []
-#  end
 
   # ログアウト処理
   #def logout

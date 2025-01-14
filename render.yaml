@@ -1,5 +1,5 @@
 databases:
-  - name: test2
+  - name: test2_45pa
     databaseName: test2_45pa
     user: test2_45pa_user
     plan: free

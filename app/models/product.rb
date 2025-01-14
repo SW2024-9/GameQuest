@@ -16,4 +16,5 @@ class Product < ApplicationRecord
         end
     end
     ###################################
+    has_one_attached :file  # ここでfileを添付できるように設定
 end

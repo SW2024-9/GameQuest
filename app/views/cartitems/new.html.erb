@@ -97,9 +97,14 @@
   <div class="form-container">
     <%= form_with model: @cart_item, url: cartitems_path do |f| %>
       <p>
-       <% product = Product.find(params[:product_id]) %>
-       <%= image_tag "/get_image/#{product.id}" %>
+        <% product = Product.find(params[:product_id]) %>
+        <% if product.file.attached? %>
+          <%= image_tag rails_blob_path(product.file, only_path: true) + "?v=#{product.updated_at.to_i}", alt: product.name %>
+        <% else %>
+          <%= image_tag "default_image.jpg", alt: product.name %> <!-- デフォルト画像 -->
+        <% end %>
       </p>
+
       <p>
         <%= f.label :name, '商品名' %>
         <%= Product.find(params[:product_id]).name %>

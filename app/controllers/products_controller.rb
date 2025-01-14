@@ -7,6 +7,9 @@ class ProductsController < ApplicationController
     # @products = @q.result(distinct: true)  # 検索結果を取得
     #@products = [] if @products.nil?  # 結果がnilの場合、空の配列にする
     @products = Product.all
+    #@products = @q.result(distinct: true) # 検索結果を取得
+    #変更前のコード
+
   end
 
   def new

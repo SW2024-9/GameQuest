@@ -110,15 +110,15 @@
   <!-- 商品ギャラリー -->
   <div class="product-gallery">
     <!-- 商品カードがここに表示されます -->
-    <% if @products.present? %>
       <% @products.each do |product| %>
         <%= link_to new_cartitem_path(product_id: product.id) do %>
-          <%= image_tag "/get_image/#{product.id}", alt: product.name %><!-- 商品名をalt属性に追加 -->
+          <% if product.file.attached? %>
+            <%= image_tag rails_blob_path(product.file, only_path: true) + "?v=#{product.updated_at.to_i}", alt: product.name %>
+          <% else %>
+            <%= image_tag "default_image.jpg", alt: product.name %> <!-- デフォルト画像 -->
+          <% end %>
         <% end %>
       <% end %>
-    <% else %>
-      <p>現在、商品はありません。</p>
-    <% end %>
   </div>
 
   <!-- フッター -->

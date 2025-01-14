@@ -65,18 +65,56 @@
     .return-link a:hover {
       text-decoration: underline;
     }
+
+    .summary {
+      border-top: 2px solid #ccc;
+      padding-top: 10px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .summary p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+
+    .checkout-btn {
+      background-color: #28a745; /* 緑色 */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .checkout-btn:hover {
+      background-color: #218838;
+    }
   </style>
 </head>
 <body>
   <div class="cart-container">
+    <% total_price = 0 %>
+    <% total_qty = 0 %>
     <% @cartitems.each do |e| %>
       <div class="cart-item">
         <p><strong>商品名:</strong> <%= Product.find(e.product_id).name %></p>
         <p><strong>価格:</strong> ¥<%= Product.find(e.product_id).price %></p>
         <p><strong>個数:</strong> <%= e.qty %></p>
         <%= link_to '削除', cartitem_path(e), data: { turbo_method: :delete } %>
+
+        <% total_price += Product.find(e.product_id).price * e.qty %>
+        <% total_qty += e.qty %>
       </div>
     <% end %>
+
+    <div class="summary">
+      <p><strong>合計金額:</strong> ¥<%= total_price %></p>
+      <p><strong>商品数:</strong> <%= total_qty %> 点</p>
+      <button class="checkout-btn" onclick="alert('レジへ進む処理を開始します');">レジへ進む</button>
+    </div>
 
     <div class="return-link">
       <%= link_to "トップに戻る", root_path %>

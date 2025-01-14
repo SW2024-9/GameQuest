@@ -1,38 +1,44 @@
 class ProductsController < ApplicationController
   def index
     #@q = Product.ransack(params[:q]) # 検索条件を作成
-<<<<<<< HEAD
-    #@products = @q.result(distinct: true) # 検索結果を取得
-    #変更前のコード
-    @products = Product.all.presence || []
-=======
     #@products = @q.result(distinct: true) || [] # 検索結果を取得
     #変更前のコード
     # @q = Product.ransack(params[:q])  # 検索条件を作成
     # @products = @q.result(distinct: true)  # 検索結果を取得
     #@products = [] if @products.nil?  # 結果がnilの場合、空の配列にする
     @products = Product.all
->>>>>>> 345fa791c734673ea660ebd756bee3969d24f9b6
   end
 
   def new
     @product = Product.new
   end
-  
-  def create
-    p = Product.new(file: params[:product][:file].read, name: params[:product][:name], price: params[:product][:price], explanation: params[:product][:explanation])
-    p.save
-    redirect_to root_path
-  end
-  
+
   def destroy
     Product.find(params[:id]).destroy
     redirect_to root_path
   end
-  
-  def get_image
-    image = Product.find_by(params[:id])
-    send_data image.file, disposition: :inline, type: 'image/png'
+
+  def create
+    @product = Product.new(product_params)
+
+    # ファイルがアップロードされている場合に添付
+    if params[:product][:file].present?
+      custom_filename = "#{params[:product][:name].parameterize}.#{params[:product][:file].original_filename.split('.').last}"
+      @product.file.attach(io: params[:product][:file].tempfile, filename: custom_filename)
+    end
+
+    if @product.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
-  
+
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :price, :explanation, :file)
+  end
+
 end
+

@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
     end
 
     if @product.save
-      redirect_to root_path
+      redirect_to top_index_path
     else
       render :new
     end

@@ -1,7 +1,7 @@
 databases:
-  - name: test2_45pa
-    databaseName: test2
-    user: test2_45pa_user
+  - name: GameQuest
+    databaseName: GameQuest
+    user: GameQuest
     plan: free
 
 services:
@@ -15,7 +15,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: test2_45pa
+          name: GameQuest
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false

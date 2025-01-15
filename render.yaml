@@ -1,6 +1,6 @@
 databases:
-  - name: test2
-    databaseName: test2_45pa
+  - name: test2_45pa
+    databaseName: test2
     user: test2_45pa_user
     plan: free
 

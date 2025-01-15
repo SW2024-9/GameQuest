@@ -10,14 +10,18 @@ Rails.application.routes.draw do
   
   post 'top/login'
   #1/15
+  get 'top/login', to: 'top#login'
+  
+  get 'users/index', to: 'users#index'
   
   get 'top/main', to: 'top#main', as: 'top_main'
+  get 'top/index', to: 'top#index', as: 'top_index'
   get 'top/logout', to: 'top#logout', as: 'top_logout'
   
   
   get 'get_image/:id', to: 'products#get_image'
   
-  root 'top#index'
+  root 'top#main'
   
   
 #12/4変更箇所

@@ -1,29 +1,63 @@
 <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* 青を基調にした背景色 */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .user-info-container {
+    background-color: #ffffff; /* 白い背景 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影で立体感を追加 */
+    width: 350px; /* コンテンツの幅を調整 */
+  }
+
+  .user-info-container h1 {
+    text-align: center;
+    color: #007BFF; /* タイトルを青に設定 */
+    margin-bottom: 20px;
+  }
+
+  .user-info-container p {
+    color: #333; /* テキストの色を調整 */
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
   .move-button {
-    width: 95%;
-    background-color: #28a745; /* 緑のボタン */
+    width: 100%;
+    background-color: #007BFF; /* 青いボタン */
     color: white;
     border: none;
     padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   .move-button:hover {
-    background-color: #218838; /* 緑のボタンホバーカラー */
+    background-color: #0056b3; /* ホバーカラーを濃い青に */
   }
 </style>
 
-<h1>ユーザー情報</h1>
-<% if @user %>
-  <p>Name: <%= @user.name %></p>
-  <p>Email: <%= @user.email %></p>
-  <p>Address: <%= @user.address %></p>
-<% else %>
-  <p>ユーザー情報が見つかりません。</p>
-  
-<% end %>
+<div class="user-info-container">
+  <h1>ユーザー情報</h1>
+  <% if @user %>
+    <p>Name: <%= @user.name %></p>
+    <p>Email: <%= @user.email %></p>
+    <p>Address: <%= @user.address %></p>
+  <% else %>
+    <p></p>
+    
+  <% end %>
 
-<%= button_to 'ログインページへ移動', '/top/login', method: :get, class: 'move-button' %>
+  <%= button_to 'ログインページへ移動', '/top/main', method: :get, class: 'move-button' %>
+</div>

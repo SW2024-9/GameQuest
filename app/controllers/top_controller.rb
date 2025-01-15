@@ -18,7 +18,7 @@ class TopController < ApplicationController
         if user && BCrypt::Password.new(user.pass) == params[:pass] # 暗号化されたパスワードと比較
             #session[:login_uid] = user.uid
             session[:login_name] = params[:name]
-            redirect_to top_main_path
+            redirect_to top_index_path
         else
             render "error", status: 422
         end
